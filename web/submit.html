@@ -12,7 +12,8 @@
 -->
 <header class="w3-bar w3-card w3-theme">
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
-  <script src="./app.js"></script>
+  <script src="uuid.js"></script>
+  <script src="app.js"></script>
   <button class="w3-bar-item w3-button w3-xxxlarge w3-hover-theme" onclick="openSidebar()">&#9776;</button>
   <h1 class="w3-bar-item">IRLO.me</h1>
 </header>
@@ -37,9 +38,9 @@
 <div class="w3-cell-row" id="form">
   <div class="w3-cell w3-container">
     <h3>Submit a photo</h3>
-    <form>
+    <form action="post">
       <input type="file" id="photoupload" name="photoupload" accept="image/*">
-      <button type="submit" onclick="addPhoto()" class="btn btn-lg" style="margin-top:20px;margin-bottom:20px;">Submit</button>
+      <button type="button" onclick="addPhoto()" class="btn btn-lg" style="margin-top:20px;margin-bottom:20px;">Submit</button>
     </form>
   </div>
 </div>
