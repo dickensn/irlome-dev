@@ -67,24 +67,4 @@ function addPhoto() {
    </div>";
  }
 
- var upload_image = function(url,form,id) {
-    var field = $(form).find('input[name=photo]');
-    var file = field[0].files[0];
-    var original_name = field.val();
-    var extension = original_name.substr((original_name.lastIndexOf('.')));
-    var filename = id + extension;
-
-    var fd = new FormData();
-    fd.append('key', filename);
-    fd.append('acl', 'bucket-owner-full-control');
-    fd.append('Content-Type', file.type);
-    fd.append("file",file);
-
-    return $.ajax({
-        type : 'POST',
-        url : url,
-        data : fd,
-        processData: false,  // tell jQuery not to convert to form data
-        contentType: false  // tell jQuery not to set contentType
-    });
-};
+ 
