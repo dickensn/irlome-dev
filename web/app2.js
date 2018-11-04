@@ -1,52 +1,38 @@
+/* still a work in progress */
+
+
+var $ = jQuery;
+
 function submitToAPI(e) {
        e.preventDefault();
-       var URL = "https://abc1234.execute-api.us-east-1.amazonaws.com/01/contact";
+       var URL = "https://9nzri28mzh.execute-api.us-east-1.amazonaws.com/test2";
 
-            var Namere = /[A-Za-z]{1}[A-Za-z]/;
-            if (!Namere.test($("#name-input").val())) {
-                         alert ("Name can not less than 2 char");
-                return;
-            }
-            var mobilere = /[0-9]{10}/;
-            if (!mobilere.test($("#phone-input").val())) {
-                alert ("Please enter valid mobile number");
-                return;
-            }
-            if ($("#email-input").val()=="") {
-                alert ("Please enter your email id");
-                return;
-            }
+/*       var photoupload = /^([\/\w-\.]+)?$/;
+         if (!photoupload.test($("#photoupload").val())) {
+             alert ("Please select a photo!");
+             return;
+         }
+         */
 
-            var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
-            if (!reeamil.test($("#email-input").val())) {
-                alert ("Please enter valid email address");
-                return;
-            }
-
-       var name = $("#name-input").val();
-       var phone = $("#phone-input").val();
-       var email = $("#email-input").val();
-       var desc = $("#description-input").val();
-       var data = {
-          name : name,
-          phone : phone,
-          email : email,
-          desc : desc
-        };
+      /* var photoupload = $("#photoupload").val();*/
+      var photoupload = $('#photoupload').files[0];
+      var formData = new FormData();
+      formData.append("photoupload", photoupload);
 
        $.ajax({
          type: "POST",
-         url : "https://abc1234.execute-api.us-east-1.amazonaws.com/01/contact",
-         dataType: "json",
-         crossDomain: "true",
-         contentType: "application/json; charset=utf-8",
-         data: JSON.stringify(data),
+         url : "https://9nzri28mzh.execute-api.us-east-1.amazonaws.com/test2",
+         headers: {  'Access-Control-Allow-Origin': '*' },
+         data: formData,
+         processData: false,
+         crossDomain: true,
+         contentType: false,
 
 
          success: function () {
            // clear form and show a success message
-           alert("Successfull");
-           document.getElementById("contact-form").reset();
+           alert("Success!");
+           document.getElementById("submit-form").reset();
        location.reload();
          },
          error: function () {
