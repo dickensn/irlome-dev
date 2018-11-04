@@ -113,10 +113,14 @@ class Kmeans:
 
         return True
 
+    def rgb2hex(self, rgb):
+        return "#{:02X}{:02X}{:02X}".format(rgb[0],rgb[1],rgb[2])
+
     def get_colors(self):
         list_of_colors = []
         for cluster in self.clusters:
-            list_of_colors.append(cluster.centroid)
+            list_of_colors.append(self.rgb2hex(cluster.centroid))
+
         return list_of_colors
     # ############################################
     # The remaining methods are used for debugging

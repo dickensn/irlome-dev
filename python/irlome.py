@@ -7,6 +7,8 @@ __copyright__ = "Copyright 2018, Nicholas J. Dickens"
 __email__ = "dickensn@fau.edu"
 __license__ = "MIT"
 
+import sys
+
 import matplotlib.pyplot as plt
 
 from skimage import io
@@ -21,7 +23,7 @@ cmap_reds = LinearSegmentedColormap.from_list('mycmap', ['white', 'red'])
 cmap_greens = LinearSegmentedColormap.from_list('mycmap', ['white','green'])
 cmap_blues = LinearSegmentedColormap.from_list('mycmap', ['white','blue'])
 
-filename = "plant_life.JPG"
+filename = sys.argv[1]
 image_rgb = io.imread(filename)
 #image_norm = exposure.equalize_hist(image_rgb)
 #image_hed = rgb2hed(image_rgb)
