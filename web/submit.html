@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
+<title>Submit</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
+
 <body>
+<!--<header class="w3-container w3-card w3-theme">
+  <h1>IRLO.me</h1>
+</header>
+-->
+<header class="w3-bar w3-card w3-theme">
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+  <script src="./app.js"></script>
+  <button class="w3-bar-item w3-button w3-xxxlarge w3-hover-theme" onclick="openSidebar()">&#9776;</button>
+  <h1 class="w3-bar-item">IRLO.me</h1>
+</header>
 
-<div class="w3-container w3-card">
-  <h1><a href="index.html">IRLO me</a></h1>
-</div>
-
+<div class="w3-container">
+<hr>
 <div class="w3-cell-row">
-  <div class="w3-cell w3-container">
-    <img src="../assets/irlome_225.png">
+  <div class="w3-cell" style="width:30%">
+    <img src="img/irlome_225.png" style="width:100%">
   </div>
+  <div class="w3-cell w3-container" id="submit">
+    <h3>Instructions</h3>
+    <p>Please take a photo of the water and upload it using this page.</p>
+    <p>The photo will be used to add to existing physical and chemical data,
+      such as salinity and temperature, plus satellite imaging and </p>
+    <p>The only data captured with the image will be date, time and geolocation.
+      No other information will be stored.  The submission may ask for your location
+       if it isn't tagged in the photo already.  Please allow this as this is
+       the only way we can link your photo to the other data.</p>
+  </div>
+</div>
+<div class="w3-cell-row" id="form">
   <div class="w3-cell w3-container">
-    <h3>Thanks</h3>
-      <p>Content goes here</p>
+    <h3>Submit a photo</h3>
+    <form>
+      <input type="file" id="photoupload" name="photoupload" accept="image/*">
+      <button type="submit" onclick="addPhoto()" class="btn btn-lg" style="margin-top:20px;margin-bottom:20px;">Submit</button>
+    </form>
   </div>
 </div>
 
-<div class="w3-container w3-card">
-  <h3><a href="map.html">View Map</a></h3>
-</div>
+<footer class="w3-container w3-theme">
+  <h3><a href="map.html">View the map</a></h3>
+</footer>
 
 </body>
