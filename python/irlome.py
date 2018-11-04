@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 ''' IRLOME class
+Dev script for better image analysis
 '''
 
 __author__ = "Nick Dickens"
@@ -76,14 +77,6 @@ ax[3].imshow(exposure.equalize_hist(image_rgb[:, :, 2]), cmap=cmap_blues)
 ax[3].set_title("Blues")
 
 
-# ax[1].imshow(exposure.equalize_hist(image_rgb[:, :, 0]), cmap=cmap_reds)
-# ax[1].set_title("Reds")
-#
-# ax[2].imshow(exposure.equalize_hist(image_rgb[:, :, 1]), cmap=cmap_greens)
-# ax[2].set_title("Greens")
-#
-# ax[3].imshow(exposure.equalize_hist(image_rgb[:, :, 2]), cmap=cmap_blues)
-# ax[3].set_title("Blues")
 
 for a in ax.ravel():
     a.axis('off')

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-''' IRLOME class
+''' Clustering by color, for IRLOME
 '''
 
 __author__ = "Nick Dickens"
