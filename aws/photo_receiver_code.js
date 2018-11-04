@@ -1,43 +1,43 @@
 var AWS = require('aws-sdk');
-var ses = new AWS.SES();
+var fs = require('fs');
 
-var RECEIVER = 'contactus@example.com';
-var SENDER = 'contactus@example.com';
+
+
 
 var response = {
  "isBase64Encoded": false,
- "headers": { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'example.com'},
+ "headers": { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'irlo.me'},
  "statusCode": 200,
  "body": "{\"result\": \"Success.\"}"
  };
 
 exports.handler = function (event, context) {
     console.log('Received event:', event);
-    sendEmail(event, function (err, data) {
+    upload_s3(event, function (err, data) {
         context.done(err, null);
     });
 };
 
-function sendEmail (event, done) {
-    var params = {
-        Destination: {
-            ToAddresses: [
-                RECEIVER
-            ]
-        },
-        Message: {
-            Body: {
-                Text: {
-                    Data: 'name: ' + event.name + '\nphone: ' + event.phone + '\nemail: ' + event.email + '\ndesc: ' + event.desc,
-                    Charset: 'UTF-8'
-                }
-            },
-            Subject: {
-                Data: 'Website Referral Form: ' + event.name,
-                Charset: 'UTF-8'
-            }
-        },
-        Source: SENDER
-    };
-    ses.sendEmail(params, done);
+function upload_s3(event, done) {
+  // Read in the file, convert it to base64, store to S3
+  fs.readFile(event.photoupload, function (err, data) {
+  if (err) { throw err; }
+
+  var base64data = new Buffer(data, 'binary');
+
+  var key = "photos/" + event.photoupload
+
+  var s3 = new AWS.S3();
+  s3.client.putObject({
+    Bucket: 'irlo.me',
+    Key: key,
+    Body: base64data,
+    ACL: 'public-read'
+  },function (resp) {
+    console.log(arguments);
+    console.log('Successfully uploaded package.');
+  });
+
+});
+
 }
