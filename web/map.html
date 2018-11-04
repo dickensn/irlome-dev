@@ -3,26 +3,56 @@
 <head>
   <meta charset='utf-8' />
   <title>Display a map</title>
+
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
+
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
   <style>
     body { margin:0; padding:0; }
-    #map { position:absolute; top:0; bottom:0; width:100%; }
+    #map { position:relative; top:0; bottom:0; height:600px; width:100%; }
   </style>
+
 </head>
 <body>
 
-<div id='map'></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGlja2Vuc24iLCJhIjoiY2pvMjg0cXozMDlvbTNrcGdlNWhlZmw4aCJ9.Jn7vdvz6heoFeq4kl6Wc_Q';
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/dickensn/cjo2br6dt1lcy2snbt1dnn6n5',
-  center: [-80.608100, 28.083600],
-  zoom: 10.0
-});
-</script>
+  <header class="w3-bar w3-card w3-theme">
+    <button class="w3-bar-item w3-button w3-xxxlarge w3-hover-theme" onclick="openSidebar()">&#9776;</button>
+    <h1 class="w3-bar-item">IRLO.me</h1>
+  </header>
+  <body>
+  <div class="w3-container">
+  <hr>
+  <div class="w3-cell-row">
+    <div class="w3-cell w3-container">
+      <h3>IRLO Data</h3>
+  </div>
+  </div>
+  <div class="w3-cell-row">
+    <div class="w3-cell w3-container">
+        <div id='map'></div>
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGlja2Vuc24iLCJhIjoiY2pvMjg0cXozMDlvbTNrcGdlNWhlZmw4aCJ9.Jn7vdvz6heoFeq4kl6Wc_Q';
+        const map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/dickensn/cjo2br6dt1lcy2snbt1dnn6n5',
+          center: [-80.608100, 28.083600],
+          zoom: 10.0
+        });
+        </script>
+
+      </div>
+  </div>
+
+  <footer class="w3-container w3-theme">
+    <h3><a href="index.html">Home</a></h3>
+  </footer>
+
+  </body>
+
+
 
 
 
