@@ -15,18 +15,17 @@ function submitToAPI(e) {
          */
 
       /* var photoupload = $("#photoupload").val();*/
-      var photoupload = $('#photoupload').files[0];
-      var formData = new FormData();
-      formData.append("photoupload", photoupload);
+
 
        $.ajax({
          type: "POST",
          url : "https://9nzri28mzh.execute-api.us-east-1.amazonaws.com/test2",
-         headers: {  'Access-Control-Allow-Origin': '*' },
-         data: formData,
+         headers: {  'Access-Control-Allow-Origin': 'http://irlo.me' },
+         data: $('#photoupload').attr('files'),
          processData: false,
          crossDomain: true,
-         contentType: false,
+         cache: false,
+         contentType: 'multipart/form-data',
 
 
          success: function () {
